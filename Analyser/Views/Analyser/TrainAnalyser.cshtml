@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Analyser.Models.AnalyserBaseModels.TrainModel>
+
+@{
+    ViewBag.Title = "TrainAnalyser";
+}
+
+<h2>Memory</h2>
+
+<p><b>Language Words:</b>@ViewBag.LanguageCount</p>
+<p><b>Technical Words:</b>@ViewBag.TechnicalCount</p>
+<p><b>Other Words:</b>@ViewBag.OtherCount</p>
+<p><b>New Words count:</b>@ViewBag.NewWordCount</p>
+<p><b>Unknown words:</b>@ViewBag.UnknownWordCount</p>
+@Html.ActionLink("Add words", "saveNewWords")
+<table class="table">
+    <tr>
+        <th class="col-md-1">
+            @Html.DisplayNameFor(model => model.CompanyName)
+        </th>
+        <th class="col-md-1">
+            @Html.DisplayNameFor(model => model.Url)
+        </th>
+        <th class="col-md-1">
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th class="col-md-9">
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CompanyName)
+        </td>
+        <td>
+           <a href="@item.Url">Visit</a>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+    </tr>
+}
+
+</table>

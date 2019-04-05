@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "saveNewWords";
+}
+
+<div class="row form-group">
+    <div class="col-lg-12 text-center form-group">
+        <span style="font-size:150px">
+        @ViewBag.Word
+            </span>
+    </div>
+</div>
+
+<div class="row form-group">
+    <div class="col-lg-12 text-center">
+        @{
+            foreach (var item in ViewBag.NextWords)
+            {
+                <button type="button" class="btn btn-default btn-xs" >@item</button>
+            }
+        }
+    </div>
+</div>
+
+<div class="row form-group">
+    <div class="col-lg-12 text-center">
+        <div class="btn-group btn-group-lg btn-group-justified" role="group" aria-label="...">
+            <button type="button" class="btn btn-info" onclick="location.href='@Url.Action("AddTechnology","Analyser", new { word = ViewBag.Word })'">Technical</button>
+            <button type="button" class="btn btn-info" onclick="location.href='@Url.Action("AddLanguage","Analyser", new { word = ViewBag.Word })'">Language</button>
+            <button type="button" class="btn btn-info" onclick="location.href='@Url.Action("AddOthers","Analyser", new { word = ViewBag.Word })'">Other</button>
+            <button type="button" class="btn btn-danger" onclick="location.href='@Url.Action("AddScrap","Analyser", new { word = ViewBag.Word })'">Scrap</button>
+            </div>
+        </div>
+</div>
+
+<div class="row form-group">
+    <div class="col-lg-12">
+        <p><b>Language Words:</b>@ViewBag.LanguageCount</p>
+        <p><b>Technical Words:</b>@ViewBag.TechnicalCount</p>
+        <p><b>Other Words:</b>@ViewBag.OtherCount</p>
+        <p><b>Scrap Words:</b>@ViewBag.ScrapCount</p>
+        <p><b>Unknown words:</b>@ViewBag.UnknownCount</p>
+    </div>
+</div>
+
+
+
